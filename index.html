@@ -1,1 +1,82 @@
-ckshclscsbc;nc;s;,c,;vs,;csb,;cxbk;cxb;cxb;,xb,;x,b;;, xbscs,nsnc,sccsv,cskldhk:hzfh:jerj;hge;jhgerhj;frhjfhjfj,frehj,
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appel Téléphonique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Passer un appel</h2>
+        <input type="text" id="nom" placeholder="Nom">
+        <input type="text" id="prenom" placeholder="Prénom">
+        <input type="tel" id="numero" placeholder="Numéro de téléphone">
+        <p class="error" id="error-message">Veuillez entrer un numéro valide !</p>
+        <button onclick="passerAppel()">Appeler</button>
+    </div>
+
+    <script>
+        function passerAppel() {
+            let numero = document.getElementById("numero").value.trim();
+            let errorMessage = document.getElementById("error-message");
+
+            // Vérification du numéro (doit contenir uniquement des chiffres et "+")
+            let regex = /^[+]?[0-9]+$/;
+            if (numero === "" || !regex.test(numero)) {
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            errorMessage.style.display = "none"; // Cacher le message d'erreur si tout est OK
+            window.location.href = "tel:" + numero;
+        }
+    </script>
+
+</body>
+  </html>
